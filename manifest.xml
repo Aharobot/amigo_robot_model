@@ -1,0 +1,26 @@
+<package>
+  <description brief="Gazebo_model">
+
+     Gazebo_model
+
+  </description>
+  <author>Rob Janssen</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/Gazebo_model</url>
+  <depend package="xacro"/>
+  <depend package="urdf"/>
+  <depend package="pr2_controller_interface"/>
+  <depend package="pr2_controller_manager"/>
+  <depend package="pr2_mechanism_model"/>
+  <depend package="pluginlib"/>
+  <depend package="geometry_msgs"/>
+  <depend package="pr2_mechanism_diagnostics"/>
+  <depend package="gazebo"/>
+  <depend package="gazebo_worlds"/>
+  <depend package="gazebo_tools"/>
+  <depend package="gazebo_plugins"/>
+  <depend package="pr2_gazebo_plugins"/>
+</package>
+
+

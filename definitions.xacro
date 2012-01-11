@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<!-- *************** LINK Definition *****************-->
+<xacro:macro name="my_link" params="name mass color *type *origin *visualorigin *inertia *color">
+  <link name="${name}">
+   <inertial>
+     <xacro:insert_block name="origin" />
+     <mass value="${mass}"/>
+     <xacro:insert_block name="inertia" />
+   </inertial>
+   <visual>
+     <xacro:insert_block name="visualorigin" />
+     <geometry>
+     <xacro:insert_block name="type" />
+     </geometry>
+     <material name="${color}">
+     <xacro:insert_block name="color" />
+     </material>
+    </visual>
+    <collision>
+     <xacro:insert_block name="visualorigin" />
+     <geometry>
+     <xacro:insert_block name="type" />
+     </geometry>
+    </collision>
+  </link>
+<gazebo reference="${name}">
+      <material>Gazebo/${color}</material>
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+</xacro:macro>
+
+<xacro:macro name="my_link_coll_free" params="name mass color *type *origin *visualorigin *inertia *color">
+  <link name="${name}">
+   <inertial>
+     <xacro:insert_block name="origin" />
+     <mass value="${mass}"/>
+     <xacro:insert_block name="inertia" />
+   </inertial>
+   <visual>
+     <xacro:insert_block name="visualorigin" />
+     <geometry>
+     <xacro:insert_block name="type" />
+     </geometry>
+     <material name="${color}">
+     <xacro:insert_block name="color" />
+     </material>
+    </visual>
+  </link>
+
+<gazebo reference="${name}">
+      <material>Gazebo/${color}</material>
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+</xacro:macro>
+
+<!-- *************** JOINT Definition *****************-->
+<xacro:macro name="my_joint" params="name type parent child *origin *dynamics *axis *limit">  
+ <joint name="${name}" type="${type}">
+    <parent link="${parent}"/>
+    <child link="${child}"/>
+    <xacro:insert_block name="origin" />
+    <xacro:insert_block name="axis" />
+    <xacro:insert_block name="dynamics" />
+    <xacro:insert_block name="limit" />
+  </joint>
+</xacro:macro>
+</robot>
