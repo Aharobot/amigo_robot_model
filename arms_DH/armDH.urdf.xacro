@@ -102,7 +102,8 @@
    <origin xyz="0.05 ${sidesign}0.202  0.0" rpy="${orientationsign} 0 0"/>
    <dynamics damping="6.0" friction="4.87"/>
    <axis xyz="0 -1 0"/>
-   <limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.0" /> 
+   <!--<limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.0" /> -->
+   <limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.01" /> 
 </xacro:my_joint>
 
 <xacro:my_joint name="shoulder_pitch_joint_${whichside}" type="revolute" parent="shoulder_link1_${whichside}" child="shoulder_link2_${whichside}">
