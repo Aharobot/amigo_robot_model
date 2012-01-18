@@ -38,17 +38,8 @@
 
 <xacro:my_link name="fore_arm_${whichside}" mass="0.8" color="Grey">
    <box size="0.065 0.065 0.28"/>
-   
-
-<!--
-   <cylinder radius="0.0325" length="0.28"/>
--->
-      <origin xyz="0.0 -0.14 0.0" rpy="0.0 0 0"/>
+   <origin xyz="0.0 -0.14 0.0" rpy="0.0 0 0"/>
    <origin xyz="0.0 -0.14 0.0" rpy="1.5708 0 0" />
-<!--
-   <origin xyz="0.0 -0.14 0.0" rpy="0 0 0"/>
-   <origin xyz="0.0 -0.14 0.0" rpy="1.5708 0 0" />
--->
    <inertia ixx="0.0054"  ixy="0"  ixz="0" iyy="0.0054" iyz="0" izz="0.0004" />
    <color rgba="0.65 0.65 0.65 1.0"/>
 </xacro:my_link>
@@ -85,9 +76,6 @@
    <color rgba="0.15 0.15 0.15 1.0"/>
 </xacro:my_link>
 
-<!--<link name="grippoint_${whichside}" />-->
-
-
 <xacro:my_link name="grippoint_${whichside}" mass="0.01" color="Blue">
    <box size="0.01 0.01 0.01"/>
    <origin xyz="-0.1 0.0 0.0" rpy="0 0 0"/>
@@ -102,8 +90,7 @@
    <origin xyz="0.05 ${sidesign}0.202  0.0" rpy="${orientationsign} 0 0"/>
    <dynamics damping="6.0" friction="4.87"/>
    <axis xyz="0 -1 0"/>
-   <!--<limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.0" /> -->
-   <limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.01" /> 
+   <limit effort="13.4" velocity="1.0" lower="-1.5708" upper="0.001" /> 
 </xacro:my_joint>
 
 <xacro:my_joint name="shoulder_pitch_joint_${whichside}" type="revolute" parent="shoulder_link1_${whichside}" child="shoulder_link2_${whichside}">
