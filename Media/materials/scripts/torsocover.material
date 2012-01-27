@@ -1,0 +1,13 @@
+material amigo_robot_model/torsocovers
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture torsocovers/white.jpg
+			}
+		}
+	}
+}

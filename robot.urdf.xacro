@@ -11,8 +11,13 @@
 <!--get link & joint definitions -->
 <include filename="$(find amigo_robot_model)/definitions.xacro" />
 
+<!--get custom materials -->
+<include filename="$(find amigo_robot_model)/materials.urdf.xacro" />
+
 <!--========BUILD BODY======-->
 <include filename="$(find amigo_robot_model)/body/body.urdf.xacro" />
+<!--extra body visuals-->
+<include filename="$(find amigo_robot_model)/body_extra_visuals/body_extra.urdf.xacro" />
 
 <!--========BUILD LASER======-->
 <include filename="$(find amigo_robot_model)/laser/laser.urdf.xacro" />
@@ -23,33 +28,20 @@
 <!--========BUILD KINECT======-->
 <include filename="$(find amigo_robot_model)/kinect/kinect.urdf.xacro" />
 
-<!--========BUILD BASE KINECT======-->
-<!--<include filename="$(find amigo_robot_model)/base_kinect/base_kinect.urdf.xacro" />-->
-
-<!--========BUILD WHEELS======-->
-
-<include filename="$(find amigo_robot_model)/wheels/wheels.urdf.xacro" />
-
-<xacro:wheel side_LR="left" side_FR="front" sign_LR="-" sign_FR="+" wheel_angle="2.3562" />
-<xacro:wheel side_LR="right" side_FR="front" sign_LR="+" sign_FR="+" wheel_angle="0.7854" />
-<xacro:wheel side_LR="left" side_FR="rear" sign_LR="-" sign_FR="-" wheel_angle="-2.3562" />
-<xacro:wheel side_LR="right" side_FR="rear" sign_LR="+" sign_FR="-" wheel_angle="-0.7854" />
-
-
 <!--========BUILD ARMS======-->
-
 <include filename="$(find amigo_robot_model)/arms_DH/armDH.urdf.xacro" />
 
-<xacro:arm whichside="left" sidesign="-" orientationsign="1.5708" rolloffset="3.1416" />
-<xacro:arm whichside="right" sidesign="+" orientationsign="-1.5708" rolloffset="0.0"/>
+<xacro:arm whichside="right" sidesign="+1.0" rollsign="+"/>
+<xacro:arm whichside="left"  sidesign="-1.0" rollsign="-"/>
 
+<!--extra arm visuals-->
+<include filename="$(find amigo_robot_model)/arm_extra_visuals/arm_extra.urdf.xacro" />
 
-<!--====BUILD TRANSMISSION ELEMENTS====-->
+<xacro:arm_extra whichside="right" sidesign="+1.0" rollsign="+"/>
+<xacro:arm_extra whichside="left"  sidesign="-1.0" rollsign="-"/>
 
-<include filename="$(find amigo_robot_model)/body/body.transmission.xacro" />
-<include filename="$(find amigo_robot_model)/arms_DH/armDH.transmission.xacro" />
-<include filename="$(find amigo_robot_model)/wheels/wheels.transmission.xacro" />
-<include filename="$(find amigo_robot_model)/head/head.transmission.xacro" />
+<!--====BUILD STUFF THAT NEEDS TO RUN IN EITHER SIMULATION OR ON THE REAL ROBOT ====-->
+<include filename="$(find amigo_robot_model)/sim_or_robot_xacro/robot_real_$(optenv ROBOT_REAL false).urdf.xacro" />
 </robot>
 
 

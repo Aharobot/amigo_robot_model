@@ -23,16 +23,17 @@
     <visual>
       <origin xyz=" 0 0 0 " rpy="0 0 0" />
       <geometry>
+		<box size="0 0 0"/>
         <!--mesh filename="package://amigo_robot_model/kinect/meshes/kinect.dae" scale="0.001 0.001 0.001"/-->
-        <mesh filename="package://amigo_robot_model/kinect/meshes/kinect_without_base.dae"/>
+        <!--<mesh filename="package://amigo_robot_model/kinect/meshes/kinect_without_base.dae"/>-->
       </geometry>
     </visual>
-    <!--<collision>
+    <collision>
       <origin xyz="-0.0365 0.0 0.0" rpy="0 0 0" />
       <geometry>
         <box size="0.0730 .2760 0.0720"/>
       </geometry>
-    </collision>-->
+    </collision>
   </link>
 
   <joint name="kinect_depth_joint" type="fixed">

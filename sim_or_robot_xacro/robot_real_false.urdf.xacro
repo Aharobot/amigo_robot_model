@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- This stuff is run only on in simulation and NOT on the real robot -->
+
+<!--====BUILD SIMULATION WHEELS====-->
+<include filename="$(find amigo_robot_model)/wheels/wheels.urdf.xacro" />
+<xacro:wheel side_LR="left" side_FR="front" sign_LR="-" sign_FR="+" wheel_angle="2.3562" />
+<xacro:wheel side_LR="right" side_FR="front" sign_LR="+" sign_FR="+" wheel_angle="0.7854" />
+<xacro:wheel side_LR="left" side_FR="rear" sign_LR="-" sign_FR="-" wheel_angle="-2.3562" />
+<xacro:wheel side_LR="right" side_FR="rear" sign_LR="+" sign_FR="-" wheel_angle="-0.7854" />
+
+<!--====BUILD SIMULATION TRANSMISSION ELEMENTS====-->
+
+<include filename="$(find amigo_robot_model)/body/body.transmission.xacro" />
+<include filename="$(find amigo_robot_model)/arms_DH/armDH.transmission.xacro" />
+<include filename="$(find amigo_robot_model)/wheels/wheels.transmission.xacro" />
+<include filename="$(find amigo_robot_model)/head/head.transmission.xacro" />
+
+</robot>
+
+
+

@@ -3,44 +3,40 @@
 
 
 <!--body-->
-<xacro:my_link name="base" mass="20" color="Red">
-   <box size="0.2 0.2 0.655" /> <!--*-->
-   <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-   <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+<xacro:my_link_texturedmesh_diff_coll name="base" mass="20" texture="bottomcovers">
+   <origin xyz="0.0 0.0 0.3275" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0.3275" rpy="0 0 -1.5708" />
    <inertia ixx="2.63"  ixy="0"  ixz="0" iyy="2.63" iyz="0" izz="2.4" /> <!--*-->
-   <color rgba="0.5 0.5 0.5  1.0"/>
+   <mesh filename="package://amigo_robot_model/body/onderkantversiekrisreducedtextured.dae" scale="0.001 0.001 0.001"/>
+   <box size="0.25 0.25 0.5"/>
+</xacro:my_link_texturedmesh_diff_coll>
+
+<xacro:my_link name="torso_slider" mass="0.1" color="Grey">
+   <cylinder radius="0.024" length="0.6" />
+   <origin xyz="0 0 0" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0.0" rpy="0 1.5708 0"/>
+   <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
 
-<xacro:my_link name="torso_slider" mass="0.1" color="Red">
-   <box size="0.2 0.2 0.655" /> <!--*-->
+<xacro:my_link name="base_link" mass="0" color="Red">
+   <cylinder radius="0.0" length="0.00" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-   <inertia ixx="0.1"  ixy="0"  ixz="0" iyy="0.1" iyz="0" izz="0.1" /> <!--*-->
-   <color rgba="0.5 0.5 0.5  1.0"/>
+   <inertia ixx="0"  ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" /> 
 </xacro:my_link>
 
-<xacro:my_link name="base_link" mass="20" color="Red">
-   <cylinder radius="0.35" length="0.05" />
-   <!--<box size="0.45 0.45 0.05" /> -->
+<xacro:my_link_texturedmesh name="torso" mass="16" texture="torsocovers">
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-   <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-   <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" /> <!--*-->
-   <color rgba="0.5 0.5 0.5  1.0"/>
-</xacro:my_link>
-<!---->
-<xacro:my_link name="torso" mass="16" color="Green"> <!--*-->
-   <box size="0.2  0.387 0.097   "/> <!--*-->
-   <origin xyz="0.0475 0.0 0.0" rpy="0 0 0"/>
-   <origin xyz="0.0475 0.0 0.0" rpy="1.5708 1.5708 1.5708" />
+   <origin xyz="0.045 0.0 0.06" rpy="-1.5708 0 -1.5708" />
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" /> <!--*-->
-   <color rgba="0.4 0.4 0.4 1.0"/>
-</xacro:my_link>
+   <mesh filename="package://amigo_robot_model/body/torsocovers.dae" scale="0.001 0.001 0.001"/>
+</xacro:my_link_texturedmesh>
 
   <joint name="spindle_joint" type="prismatic">
     <parent link="base"/>
-    <child link="torso"/>
+    <child link="torso_slider"/>
     <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.3325" rpy="3.14159265 -1.5708 0"/>
+    <origin xyz="0.0 0.0 0.58" rpy="3.14159265 -1.5708 0"/>
     <dynamics damping="3" friction="0.0"/> <!--*-->
     <limit effort="30" velocity="1.0" lower="0.0" upper="0.41" /> <!--*-->
   </joint>
@@ -49,14 +45,14 @@
     <parent link="base_link"/>
     <child link="base"/>
     <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.3475" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
   </joint>
   
     <joint name="torso_slider_joint" type="fixed">
-    <parent link="torso"/>
-    <child link="torso_slider"/>
+    <parent link="torso_slider"/>
+    <child link="torso"/>
     <axis xyz="1 0 0"/>
-    <origin xyz="  -0.33 0.0 0.0" rpy="0 1.57 0"/>
+    <origin xyz="0.135 0.0 0.0" rpy="0 0 0"/>
   </joint>
 
 </robot>

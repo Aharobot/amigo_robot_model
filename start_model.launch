@@ -1,6 +1,8 @@
+<?xml version="1.0"?>
+
 <launch>
   <!-- start world -->
-  <include file="$(find gazebo_worlds)/launch/office_world.launch"/>
+  <include file="$(find gazebo_worlds)/launch/empty_world.launch"/>
 
   <!-- load robot -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find amigo_robot_model)/robot.urdf.xacro' " />
@@ -8,6 +10,13 @@
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <!--<node name="spawn_single_link" pkg="gazebo_tools" type="gazebo_model" args="-unpause -p robot_description spawn -z 2" respawn="false" />-->
   <node name="spawn_amigo" pkg="gazebo" type="spawn_model" args="-unpause -urdf -param robot_description -model amigo -z 0.1 -x -3 -y 2.3 -Y 1.57" respawn="false" output="screen" />
+
+  <!-- Controllers -->
+  <include file="$(find pr2_controller_manager)/controller_manager.launch"/>
+  <include file="$(find amigo_simulation_controllers)/controllers.launch"/>
+
+  <!-- Rviz -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find amigo_robot_model)/demo.vcg"/>
   
 </launch>
 
