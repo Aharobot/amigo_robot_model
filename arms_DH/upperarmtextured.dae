@@ -17,7 +17,7 @@
   </asset>
   <library_images>
     <image id="Map__2-image" name="Map__2">
-      <init_from>file://../Media/materials/textures/torsocovers/white.jpg</init_from>
+      <init_from>file://../Media/materials/textures/white/white.jpg</init_from>
     </image>
   </library_images>
   <library_materials>
@@ -38157,9 +38157,7 @@
       <node id="bovenarmversiekrisreducedatenth" name="bovenarmversiekrisreducedatenth">
         <translate sid="translate">8.711559 0.789032 -0.867339</translate>
         <rotate sid="jointOrientX">1 0 0 -90.000000</rotate>
-        <node id="bovenarmversiekrisreducedatenth-Pivot" name="bovenarmversiekrisreducedatenth-Pivot">
-          <translate>9.594183 0.869219 -0.010757</translate>
-          <rotate>0.000000 0.000000 0.000000 0.000000</rotate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
           <instance_geometry url="#bovenarmversiekrisreducedatenth-lib">
             <bind_material>
               <technique_common>
@@ -38168,7 +38166,6 @@
             </bind_material>
           </instance_geometry>
         </node>
-      </node>
     </visual_scene>
   </library_visual_scenes>
   <scene>

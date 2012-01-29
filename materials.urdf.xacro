@@ -36,9 +36,9 @@
   <material name="bottomcovers">
     <texture filename="package://amigo_robot_model/Media/materials/textures/bottomcovers/finalreduced.jpg" />
   </material>
-
-  <material name="torsocovers">
-    <texture filename="package://amigo_robot_model/Media/materials/textures/torsocovers/white.jpg" />
+  
+    <material name="white">
+    <texture filename="package://amigo_robot_model/Media/materials/textures/white/white.jpg" />
   </material>
 
 </robot>

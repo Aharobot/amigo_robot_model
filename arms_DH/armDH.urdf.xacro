@@ -28,11 +28,11 @@
    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
-<xacro:my_link_texturedmesh name="upper_arm_${whichside}" mass="2.9" texture="torsocovers">
+<xacro:my_link_texturedmesh name="upper_arm_${whichside}" mass="2.9" texture="white">
    <origin xyz="0.0 -0.2 0.0" rpy="0 0 0"/>
    <origin xyz="-0.00959 -0.19131 -0.00001" rpy="0 0 3.1415" />
    <inertia ixx="0.027"  ixy="0"  ixz="0" iyy="0.027" iyz="0" izz="0.004" />
-   <mesh filename="package://amigo_robot_model/arms_DH/upperarmtextured2.dae" scale="0.001 0.001 0.001"/> 
+   <mesh filename="package://amigo_robot_model/arms_DH/upperarmtextured.dae" scale="0.001 0.001 0.001"/> 
 </xacro:my_link_texturedmesh>
 
 <xacro:my_link name="elbow_link4_${whichside}" mass="0.1" color="Grey">
@@ -42,11 +42,11 @@
    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
-<xacro:my_link_texturedmesh name="fore_arm_${whichside}" mass="0.1" texture="torsocovers">
+<xacro:my_link_texturedmesh name="fore_arm_${whichside}" mass="0.1" texture="white">
    <origin xyz="0.0 -0.14 0.0" rpy="0.0 0 0"/>
    <origin xyz="0.00425 -0.14868 0.00547" rpy="0 -1.5708 0" />
    <inertia ixx="0.0054"  ixy="0"  ixz="0" iyy="0.0054" iyz="0" izz="0.0004" />
-   <mesh filename="package://amigo_robot_model/arms_DH/forearmtextured2.dae" scale="0.001 0.001 0.001"/> 
+   <mesh filename="package://amigo_robot_model/arms_DH/forearmtextured.dae" scale="0.001 0.001 0.001"/> 
 </xacro:my_link_texturedmesh>
 
 <xacro:my_link name="wrist_link6_${whichside}" mass="0.01" color="Black">
