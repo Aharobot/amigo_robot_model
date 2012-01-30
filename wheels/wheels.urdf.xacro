@@ -10,7 +10,7 @@
     <parent link="base"/>
     <child link="wheel_${side_LR}_${side_FR}"/>
     <axis xyz="1 0 0"/>
-    <origin xyz="${sign_LR}0.205 ${sign_FR}0.205 0.005" rpy="0 0 ${wheel_angle}"/>
+    <origin xyz="${sign_LR}0.2 ${sign_FR}0.2 0.005" rpy="0 0 ${wheel_angle}"/>
     <dynamics damping="1" friction="0.0"/>
     <limit effort="5.0" velocity="5.0"/>
   </joint>
