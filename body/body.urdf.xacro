@@ -5,7 +5,7 @@
 <!--body-->
 <xacro:my_link_texturedmesh_diff_coll name="base" mass="20" texture="bottomcovers">
    <origin xyz="0.0 0.0 0.3275" rpy="0 0 0"/>
-   <origin xyz="0.0 0.0 0.3275" rpy="0 0 -1.5708" />
+   <origin xyz="0.0 0.0 0.23" rpy="0 0 -1.5708" />
    <inertia ixx="2.63"  ixy="0"  ixz="0" iyy="2.63" iyz="0" izz="2.4" /> <!--*-->
    <mesh filename="package://amigo_robot_model/body/bottomcovers.dae" scale="0.001 0.001 0.001"/>
    <box size="0.25 0.25 0.5"/>
