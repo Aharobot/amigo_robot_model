@@ -40,5 +40,13 @@
     <material name="white">
     <texture filename="package://amigo_robot_model/Media/materials/textures/white/white.jpg" />
   </material>
+  
+  <material name="logo">
+    <texture filename="package://amigo_robot_model/Media/materials/textures/logo/tue.jpg" />
+  </material>
+  
+  <material name="aluminum">
+    <texture filename="package://amigo_robot_model/Media/materials/textures/aluminum/aluminium_0001_c.jpg" />
+  </material>
 
 </robot>

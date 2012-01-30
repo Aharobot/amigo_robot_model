@@ -11,12 +11,12 @@
    <box size="0.25 0.25 0.5"/>
 </xacro:my_link_texturedmesh_diff_coll>
 
-<xacro:my_link name="torso_slider" mass="0.1" color="Grey">
-   <cylinder radius="0.024" length="0.6" />
+<xacro:my_link_texturedmesh name="torso_slider" mass="0.1" texture="aluminum">
    <origin xyz="0 0 0" rpy="0 0 0"/>
-   <origin xyz="0.0 0.0 0.0" rpy="0 1.5708 0"/>
+   <origin xyz="-0.35 0.0 0.0" rpy="0 1.5708 0"/>
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-</xacro:my_link>
+   <mesh filename="package://amigo_robot_model/body/torsoslidertextured.dae" scale="0.01 0.01 0.01"/>
+</xacro:my_link_texturedmesh>
 
 <xacro:my_link name="base_link" mass="0" color="Red">
    <cylinder radius="0.0" length="0.00" />
