@@ -2,26 +2,42 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 
+<!--base plate-->
+<xacro:my_link_textured name="base_plate" mass="0" texture="aluminum">
+   <cylinder radius="0.333" length="0.02" />
+   <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+   <inertia ixx="0"  ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" /> 
+</xacro:my_link_textured>
+
+  <joint name="base_plate_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_plate"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+  </joint>
+
+
 <!--torso sliders-->
 <xacro:my_link_texturedmesh name="torso_assist_slider_right" mass="0.01" texture="aluminum">
    <origin xyz="0 0 0" rpy="0 0 0"/>
-   <origin xyz="-0.3  0.0 0.0" rpy="0 1.5708 0"/>
+   <origin xyz="-0.4  0.0 0.0" rpy="0 1.5708 0"/>
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.01"/>
+   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.0125"/>
 </xacro:my_link_texturedmesh>
 
 <xacro:my_link_texturedmesh name="torso_assist_slider_left" mass="0.01" texture="aluminum">
    <origin xyz="0 0 0" rpy="0 0 0"/>
-   <origin xyz="-0.3  0.0 0.0" rpy="0 1.5708 0"/>
+   <origin xyz="-0.4  0.0 0.0" rpy="0 1.5708 0"/>
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.01"/>
+   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.0125"/>
 </xacro:my_link_texturedmesh>
 
 <xacro:my_link_texturedmesh name="torso_assist_slider_back" mass="0.01" texture="aluminum">
    <origin xyz="0 0 0" rpy="0 0 0"/>
-   <origin xyz="-0.3 0.0 0.0" rpy="0 1.5708 0"/>
+   <origin xyz="-0.4 0.0 0.0" rpy="0 1.5708 0"/>
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.01"/>
+   <mesh filename="package://amigo_robot_model/body_extra_visuals/torsoassistslidertextured.dae" scale="0.01 0.01 0.0125"/>
 </xacro:my_link_texturedmesh>
   
 <joint name="torso_slider_assist_joint_right" type="fixed">

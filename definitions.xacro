@@ -29,6 +29,34 @@
     </gazebo>
 </xacro:macro>
 
+<xacro:macro name="my_link_textured" params="name mass texture *type *origin *visualorigin *inertia">
+  <link name="${name}">
+   <inertial>
+     <xacro:insert_block name="origin" />
+     <mass value="${mass}"/>
+     <xacro:insert_block name="inertia" />
+   </inertial>
+   <visual>
+     <xacro:insert_block name="visualorigin" />
+     <geometry>
+     <xacro:insert_block name="type" />
+     </geometry>
+     <material name="${texture}">
+     </material>
+    </visual>
+    <collision>
+     <xacro:insert_block name="visualorigin" />
+     <geometry>
+     <xacro:insert_block name="type" />
+     </geometry>
+    </collision>
+  </link>
+<gazebo reference="${name}">
+      <material>amigo_robot_model/${texture}</material>
+      <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+</xacro:macro>
+
 <xacro:macro name="my_link_coll_free" params="name mass color *type *origin *visualorigin *inertia">
   <link name="${name}">
    <inertial>
@@ -107,7 +135,7 @@
     </gazebo>
 </xacro:macro>
 
-<xacro:macro name="my_link_texturedmesh_diff_coll" params="name mass texture *origin *visualorigin *inertia *mesh *type">
+<xacro:macro name="my_link_texturedmesh_diff_coll" params="name mass texture *origin *visualorigin *collorigin *inertia *mesh *type">
   <link name="${name}">
    <inertial>
      <xacro:insert_block name="origin" />
@@ -122,7 +150,7 @@
      <material name="${texture}"/>
     </visual>
     <collision>
-     <xacro:insert_block name="visualorigin" />
+     <xacro:insert_block name="collorigin" />
      <geometry>
      <xacro:insert_block name="type" />
      </geometry>
