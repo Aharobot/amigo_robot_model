@@ -3,11 +3,11 @@
 
 
 <!--base plate-->
-<xacro:my_link_textured name="base_plate" mass="0" texture="aluminum">
+<xacro:my_link_textured name="base_plate" mass="0.1" texture="aluminum">
    <cylinder radius="0.333" length="0.02" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-   <inertia ixx="0"  ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" /> 
+   <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" /> 
 </xacro:my_link_textured>
 
   <joint name="base_plate_joint" type="fixed">
