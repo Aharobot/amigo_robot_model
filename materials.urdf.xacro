@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <robot>
 
-  <material name="Orange">
-    <color rgba="1.0 0.45 0.0 1.0"/>
-  </material>
-
   <material name="Blue">
     <color rgba="0.0 0.0 0.8 1.0"/>
   </material>
@@ -51,6 +47,10 @@
   
   <material name="aluminum">
     <texture filename="package://amigo_robot_model/Media/materials/textures/aluminum/aluminium_0001_c.jpg" />
+  </material>
+  
+  <material name="orange">
+    <texture filename="package://amigo_robot_model/Media/materials/textures/orange/orange.jpg" />
   </material>
 
 </robot>

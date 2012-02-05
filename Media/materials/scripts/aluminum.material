@@ -5,7 +5,6 @@ material amigo_robot_model/aluminum
 	{
 		pass
 		{
-			ambient 1.0 1.0 1.0
 			texture_unit
 			{
 				texture aluminum/aluminium_0001_c.jpg

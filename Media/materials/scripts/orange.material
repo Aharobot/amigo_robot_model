@@ -1,13 +1,14 @@
 material amigo_robot_model/orange
 {
     receive_shadows on
-    lighting on
 	technique
 	{
 		pass
 		{
-			diffuse 1.0 0.45 0.0 1.0
-			specular 1.0 0.45 0.0 1.0
-
+			texture_unit
+			{
+				texture orange/orange.jpg
+			}
+		}
 	}
 }
