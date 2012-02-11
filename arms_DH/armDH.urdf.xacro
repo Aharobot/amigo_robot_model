@@ -138,7 +138,7 @@
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
    <dynamics damping="0.5" friction="0.68"/>
    <axis xyz="0 0 ${sidesign}1"/>
-   <limit effort="1" velocity="1.0" lower="-0.89" upper="0.89"/>
+   <limit effort="1" velocity="1.0" lower="-0.71" upper="0.71"/>
 </xacro:my_joint>
 
 <xacro:my_joint name="finger1_joint_${whichside}" type="revolute" parent="hand_${whichside}" child="finger1_${whichside}">
