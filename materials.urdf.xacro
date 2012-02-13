@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot>
 
+   <author>Kris van Tienhoven</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
+   
+<!-- this files contains the definitions for all colors and textures for rviz -->
   <material name="Blue">
     <color rgba="0.0 0.0 0.8 1.0"/>
   </material>

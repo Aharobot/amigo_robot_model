@@ -1,17 +1,22 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+   <author>Rob Janssen, Kris van Tienhoven</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
 
-<!--body-->
-<xacro:my_link_texturedmesh_diff_coll name="base" mass="20" texture="bottomcovers">
-   <origin xyz="0.0 0.0 0.3275" rpy="0 0 0"/>
-   <origin xyz="0.0 0.0 0.23" rpy="0 0 -1.5708" />
-   <origin xyz="0.0 0.0 0.33" rpy="0 0 -1.5708" />
-   <inertia ixx="2.63"  ixy="0"  ixz="0" iyy="2.63" iyz="0" izz="2.4" /> <!--*-->
-   <mesh filename="package://amigo_robot_model/body/bottomcovers.dae" scale="0.001 0.001 0.001"/>
-   <box size="0.275 0.275 0.6"/>
-</xacro:my_link_texturedmesh_diff_coll>
 
+<!--links start here-->
+
+<!--the torso-->
+<xacro:my_link_texturedmesh name="torso" mass="16" texture="white">
+   <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+   <origin xyz="0.045 0.0 0.06" rpy="-1.5708 0 -1.5708" />
+   <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+   <mesh filename="package://amigo_robot_model/body/torsocovers.dae" scale="0.001 0.001 0.001"/>
+</xacro:my_link_texturedmesh>
+
+<!--the spindle-->
 <xacro:my_link_texturedmesh name="torso_slider" mass="0.1" texture="aluminum">
    <origin xyz="0 0 0" rpy="0 0 0"/>
    <origin xyz="-0.35 0.0 0.0" rpy="0 1.5708 0"/>
@@ -19,6 +24,18 @@
    <mesh filename="package://amigo_robot_model/body/torsoslidertextured.dae" scale="0.01 0.01 0.01"/>
 </xacro:my_link_texturedmesh>
 
+<!--the bottomcovers
+note: uses a different bounding box, because a normal one would be too inaccurate-->
+<xacro:my_link_texturedmesh_diff_coll name="base" mass="20" texture="bottomcovers">
+   <origin xyz="0.0 0.0 0.3275" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0.23" rpy="0 0 -1.5708" />
+   <origin xyz="0.0 0.0 0.33" rpy="0 0 -1.5708" />
+   <inertia ixx="2.63"  ixy="0"  ixz="0" iyy="2.63" iyz="0" izz="2.4" /> 
+   <mesh filename="package://amigo_robot_model/body/bottomcovers.dae" scale="0.001 0.001 0.001"/>
+   <box size="0.275 0.275 0.6"/>
+</xacro:my_link_texturedmesh_diff_coll>
+
+<!--the root of the tf-tree, because it serves only this function it has no visuals-->
 <xacro:my_link name="base_link" mass="0" color="Red">
    <cylinder radius="0.0" length="0.00" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -26,6 +43,33 @@
    <inertia ixx="0"  ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" /> 
 </xacro:my_link>
 
+
+<!-- joints start here -->
+
+  <joint name="spindle_joint" type="prismatic">
+    <parent link="base"/>
+    <child link="torso_slider"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.0 0.58" rpy="3.14159265 -1.5708 0"/>
+    <dynamics damping="3" friction="0.0"/> <!--*-->
+    <limit effort="30" velocity="1.0" lower="0.0" upper="0.41" /> <!--*-->
+  </joint>
+
+  <joint name="base_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
+  </joint>
+  
+    <joint name="torso_slider_joint" type="fixed">
+    <parent link="torso_slider"/>
+    <child link="torso"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.135 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  
+<!--extra boundingbox for the batteries on the left-->
 <link name="batterycovercollision_left">
    <inertial>
      <origin xyz="0.0 0.0 0.0" />
@@ -53,6 +97,8 @@
     <origin xyz="0.0 0.25 0.1" rpy="0 0 0"/>
 </joint>
 
+
+<!--extra boundingbox for the batteries on the right-->
 <link name="batterycovercollision_right">
    <inertial>
      <origin xyz="0.0 0.0 0.0" />
@@ -80,7 +126,8 @@
     <origin xyz="0.0 -0.25 0.1" rpy="0 0 0"/>
 </joint>
 
-<link name="batterycovercollision_back">
+<!--extra boundingbox for the computers at the back-->
+<link name="computercovercollision">
    <inertial>
      <origin xyz="0.0 0.0 0.0" />
      <mass value="0.001"/>
@@ -100,42 +147,11 @@
     </collision>
 </link>
 
-<joint name="batterycovercollision_back_joint" type="fixed">
+<joint name="computercovercollision_joint" type="fixed">
     <parent link="base"/>
-    <child link="batterycovercollision_back"/>
+    <child link="computercovercollision"/>
     <axis xyz="1 0 0"/>
     <origin xyz="-0.25 0.0 0.125" rpy="0 0 1.5708"/>
 </joint>
-
-
-<xacro:my_link_texturedmesh name="torso" mass="16" texture="white">
-   <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-   <origin xyz="0.045 0.0 0.06" rpy="-1.5708 0 -1.5708" />
-   <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" /> <!--*-->
-   <mesh filename="package://amigo_robot_model/body/torsocovers.dae" scale="0.001 0.001 0.001"/>
-</xacro:my_link_texturedmesh>
-
-  <joint name="spindle_joint" type="prismatic">
-    <parent link="base"/>
-    <child link="torso_slider"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.58" rpy="3.14159265 -1.5708 0"/>
-    <dynamics damping="3" friction="0.0"/> <!--*-->
-    <limit effort="30" velocity="1.0" lower="0.0" upper="0.41" /> <!--*-->
-  </joint>
-
-  <joint name="base_link_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
-  </joint>
-  
-    <joint name="torso_slider_joint" type="fixed">
-    <parent link="torso_slider"/>
-    <child link="torso"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.135 0.0 0.0" rpy="0 0 0"/>
-  </joint>
 
 </robot>

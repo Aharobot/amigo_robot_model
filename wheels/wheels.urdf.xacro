@@ -2,8 +2,16 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!--wheels-->
+   <author>Kris van Tienhoven</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
 
+<!--Start of the macro for the four cylinders that are the wheels
+@param side_LR is "left"  or "right"
+@param side_FR is "front" or "rear"
+@param sign_LR is - or +
+@param sign_FR is - or +
+@param wheel_angle is the initial rotation of the wheel -->
 <xacro:macro name="wheel" params="side_LR side_FR sign_LR sign_FR wheel_angle">
   
   <joint name="wheel_inner_joint_${side_LR}_${side_FR}" type="continuous">
@@ -24,6 +32,13 @@
    
 </xacro:macro>
 
+<!--Start of the macro for the 12 spheres on each wheel
+@param side_LR is "left"  or "right"
+@param side_FR is "front" or "rear"
+@param number is a integer out of the interval [1...12]
+@param y_ is the y position of the sphere
+@param z_ is the z position of the wheel
+@param roll_ is the initial rotation of the sphere -->
 <xacro:macro name="z_sphere" params="side_LR side_FR number y_ z_ roll_">
 
 	<joint name="omni_sphere${number}_joint_${side_LR}_${side_FR}" type="continuous">
@@ -44,6 +59,11 @@
 	
 </xacro:macro>
 
+<!--the macro that calls the macro for a sphere for each wheel
+@param nr is a integer out of the interval [1...12]
+@param y is the y position of the sphere
+@param z is the z position of the wheel
+@param roll is the initial rotation of the sphere -->
 <xacro:macro name="spheres" params="nr y z roll">
   <xacro:z_sphere side_LR="left" side_FR="front" number="${nr}" y_="${y}" z_="${z}" roll_="${roll}"/>
   <xacro:z_sphere side_LR="right" side_FR="front"  number="${nr}" y_="${y}" z_="${z}" roll_="${roll}"/>
@@ -51,6 +71,7 @@
   <xacro:z_sphere side_LR="right" side_FR="rear" number="${nr}" y_="${y}" z_="${z}" roll_="${roll}"/>
 </xacro:macro>
 
+<!--calling the macro to create a sphere for each wheel 12 times-->
 <xacro:spheres nr="1" y="0.03" z="0.0" roll="0.0"/>
 <xacro:spheres nr="2" y="0.026" z="0.015" roll="0.5236"/>
 <xacro:spheres nr="3" y="0.015" z="0.026" roll="1.0472"/>

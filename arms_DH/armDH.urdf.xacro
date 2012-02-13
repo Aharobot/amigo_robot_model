@@ -3,10 +3,23 @@
 	xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" 
 	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" 
 	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+	
+	<author>Rob Janssen, Kris van Tienhoven</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
 
-<!--Fill out Link macros-->
-<xacro:macro name="arm" params="whichside sidesign rollsign">
+<!--Start of the macro
+@param whichside is "left"  or "right"
+@param sidesign is -1 or +1
+@param rollsign is - or +
 
+The reason sidesign is -1 or +1 and not just - or + aswell is because 
+it has to be reversable and xml cannot multiply - or + but can multiply
+ -1 and +1-->
+ <xacro:macro name="arm" params="whichside sidesign rollsign">
+
+
+<!--the end of the clavicle, yaw rotation-->
 <xacro:my_link name="shoulder_mount_${whichside}" mass="0.1" color="Black">
    <cylinder radius="0.05" length="0.11" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -14,6 +27,7 @@
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
 
+<!--the cylinder on the end of the clavicle, pitch rotation-->
 <xacro:my_link name="shoulder_link1_${whichside}" mass="0.1" color="Black">
    <cylinder radius="0.045" length="0.015" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -21,6 +35,7 @@
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
 
+<!--the box that connects the clavicle to the upper arm, roll rotation-->
 <xacro:my_link name="shoulder_link2_${whichside}" mass="0.1" color="Black">
    <box size="0.035 0.01 0.1" />
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -28,6 +43,7 @@
    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
+<!--the upper arm-->
 <xacro:my_link_texturedmesh name="upper_arm_${whichside}" mass="2.9" texture="white">
    <origin xyz="0.0 -0.2 0.0" rpy="0 0 0"/>
    <origin xyz="-0.00959 -0.19131 -0.00001" rpy="0 0 3.1415" />
@@ -35,6 +51,8 @@
    <mesh filename="package://amigo_robot_model/arms_DH/upperarmtextured.dae" scale="0.001 0.001 0.001"/> 
 </xacro:my_link_texturedmesh>
 
+<!--the elbow
+note: not visible, see arm_extra_visuals for the elbow visuals -->
 <xacro:my_link name="elbow_link4_${whichside}" mass="0.1" color="Grey">
    <cylinder radius="0.0" length="0.0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -42,6 +60,7 @@
    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
+<!--the forearm-->
 <xacro:my_link_texturedmesh name="fore_arm_${whichside}" mass="0.1" texture="white">
    <origin xyz="0.0 -0.14 0.0" rpy="0.0 0 0"/>
    <origin xyz="0.00425 -0.14868 0.00547" rpy="0 -1.5708 0" />
@@ -49,6 +68,8 @@
    <mesh filename="package://amigo_robot_model/arms_DH/forearmtextured.dae" scale="0.001 0.001 0.001"/> 
 </xacro:my_link_texturedmesh>
 
+<!--the wrist
+note: not visible, see arm_extra_visuals for the wrist visuals -->
 <xacro:my_link name="wrist_link6_${whichside}" mass="0.01" color="Black">
    <cylinder radius="0.0" length="0.0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -56,6 +77,7 @@
    <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
+<!--the hand -->
 <xacro:my_link name="hand_${whichside}" mass="0.2" color="Grey">
    <box size="0.080 0.085 0.038"/>
    <origin xyz="0.048 0.0 0.0" rpy="0 0 0"/>
@@ -63,6 +85,7 @@
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
 
+<!--the right finger-->
 <xacro:my_link name="finger1_${whichside}" mass="0.05" color="Black">
    <box size="0.02 0.022 0.11"/>
    <origin xyz="0.0 0.0 -0.055" rpy="0 0 0"/>
@@ -70,6 +93,7 @@
    <inertia ixx="0.00037"  ixy="0"  ixz="0" iyy="0.00052" iyz="0" izz="0.00052" />
 </xacro:my_link>
 
+<!--the left finger-->
 <xacro:my_link name="finger2_${whichside}" mass="0.05" color="Black">
    <box size="0.02 0.022 0.11"/>
    <origin xyz="0.0 0.0 -0.055" rpy="0 0 0"/>
@@ -77,6 +101,8 @@
    <inertia ixx="0.00037"  ixy="0"  ixz="0" iyy="0.00052" iyz="0" izz="0.00052" />
 </xacro:my_link>
 
+<!--the grippoint
+note: not visible, purely kinematic-->
 <xacro:my_link name="grippoint_${whichside}" mass="0.01" color="Blue">
    <box size="0.0 0.0 0.0"/>
    <origin xyz="-0.1 0.0 0.0" rpy="0 0 0"/>
@@ -85,7 +111,8 @@
 </xacro:my_link>
 
 
-<!--Fill out Joint macros-->
+<!--the joints start here-->
+
   <joint name="shoulder_mount_joint_${whichside}" type="fixed">
     <parent link="torso"/>
     <child link="shoulder_mount_${whichside}"/>

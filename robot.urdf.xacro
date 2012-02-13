@@ -4,6 +4,11 @@
        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       
+       
+   <author>Rob Janssen</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
 
 <!--get plugins -->
 <include filename="$(find amigo_robot_model)/gazebo/gazebo.urdf.xacro" />

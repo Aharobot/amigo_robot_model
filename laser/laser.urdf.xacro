@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+   <author>Kris van Tienhoven</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
+
+<!--the laser at the base of the robot -->
 <xacro:my_link name="base_laser" mass="0.5" color="Black">
    <box size="0.05 0.065 0.12" /> <!--*-->
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -15,6 +20,7 @@
    <limit effort="13.4" velocity="1.0" lower="-0.7809" upper="1.5708" /> 
 </xacro:my_joint>
 
+<!--the orange top of the laser-->
 <xacro:my_link_textured name="lasertop" mass="0.01" texture="orange">
    <box size="0.05 0.065 0.01" /> <!--*-->
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -27,6 +33,7 @@
     <child link="lasertop"/>
 </joint>
 
+<!--the tue logo in front of the laser-->
 <xacro:my_link_texturedmesh name="logo" mass="0.01" texture="logo">
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
    <origin xyz="0.025 0.0 -0.165" rpy="0 0 3.1415" />
