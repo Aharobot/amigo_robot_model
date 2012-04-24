@@ -33,6 +33,9 @@
 <!--========BUILD KINECT======-->
 <include filename="$(find amigo_robot_model)/kinect/kinect.urdf.xacro" />
 
+<!--========BUILD BASE_KINECT======-->
+<include filename="$(find amigo_robot_model)/kinect/base_kinect.urdf.xacro" />
+
 <!--========BUILD ARMS======-->
 <include filename="$(find amigo_robot_model)/arms_DH/armDH.urdf.xacro" />
 
