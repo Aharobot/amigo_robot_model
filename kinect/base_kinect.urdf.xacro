@@ -7,7 +7,7 @@
   <property name="M_PI" value="3.14159"/>
     
   <joint name="base_kinect_base_kinect_joint" type="fixed">
-    <origin xyz="0.29 0 0.31" rpy="0 -0.03 0" /> <!-- THESE VALUES ARE ROUGH ESTIMATES!! -->
+    <origin xyz="0.29 0 0.31" rpy="0 -0.07 0" /> <!-- THESE VALUES ARE ROUGH ESTIMATES!! -->
     <parent link="base_link" />
     <child link="base_kinect_openni_camera" />
   </joint>
