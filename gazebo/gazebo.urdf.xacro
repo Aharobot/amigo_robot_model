@@ -136,7 +136,8 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>20</updateRate>
         <imageTopicName>/camera/rgb/image_raw</imageTopicName>
-        <pointCloudTopicName>/camera/rgb/points</pointCloudTopicName>
+        <!--<pointCloudTopicName>/camera/rgb/points</pointCloudTopicName> --> <!-- To match listening component topic names -->
+        <pointCloudTopicName>/camera/rgb/points_throttled_and_voxelized</pointCloudTopicName> -->
         <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
         <frameName>/openni_depth_optical_frame</frameName>
         <!--<distortion_k1>0.00000001</distortion_k1>
@@ -161,7 +162,8 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>20</updateRate>
         <imageTopicName>/base_kinect/camera/rgb/image_raw</imageTopicName>
-        <pointCloudTopicName>/base_kinect/camera/rgb/points</pointCloudTopicName>
+        <!--<pointCloudTopicName>/base_kinect/camera/rgb/points</pointCloudTopicName> --> <!-- To match listening component topic names -->
+        <pointCloudTopicName>/base_kinect/camera/rgb/points_throttled_and_voxelized</pointCloudTopicName>
         <cameraInfoTopicName>/base_kinect/camera/rgb/camera_info</cameraInfoTopicName>
         <frameName>/base_kinect_openni_depth_optical_frame</frameName>
         <!--<distortion_k1>0.00000001</distortion_k1>
