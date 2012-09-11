@@ -135,7 +135,7 @@
       <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20</updateRate>
-        <imageTopicName>/camera/rgb/image_raw</imageTopicName>
+        <imageTopicName>/camera/rgb/image_color</imageTopicName>
         <pointCloudTopicName>/camera/rgb/points</pointCloudTopicName>
         <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
         <frameName>/openni_depth_optical_frame</frameName>
