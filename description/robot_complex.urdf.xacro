@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="amigo"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       
+       
+   <author>Rob Janssen</author>
+   <license>BSD</license>
+   <review status="unreviewed" notes=""/>
+
+<!--get plugins -->
+<include filename="$(find amigo_robot_model)/description/gazebo/gazebo.urdf.xacro" />
+
+<!--get link & joint definitions -->
+<include filename="$(find amigo_robot_model)/description/definitions.xacro" />
+
+<!--get custom materials -->
+<include filename="$(find amigo_robot_model)/description/materials.urdf.xacro" />
+
+<!--========BUILD BODY======-->
+<include filename="$(find amigo_robot_model)/description/body/body.urdf.xacro" />
+<!--extra body visuals-->
+<include filename="$(find amigo_robot_model)/description/body_extra_visuals/body_extra.urdf.xacro" />
+
+<!--========BUILD LASER======-->
+<include filename="$(find amigo_robot_model)/description/laser/laser.urdf.xacro" />
+
+<!--========BUILD HEAD======-->
+<include filename="$(find amigo_robot_model)/description/head/head.urdf.xacro" />
+
+<!--========BUILD KINECT======-->
+<include filename="$(find amigo_robot_model)/description/kinect/kinect.urdf.xacro" />
+
+<!--========BUILD ARMS======-->
+<include filename="$(find amigo_robot_model)/description/arms/arm.urdf.xacro" />
+
+<xacro:arm whichside="right" sidesign="+1.0" rollsign="+"/>
+<xacro:arm whichside="left"  sidesign="-1.0" rollsign="-"/>
+
+<!--extra arm visuals-->
+<include filename="$(find amigo_robot_model)/description/arm_extra_visuals/arm_extra.urdf.xacro" />
+
+<xacro:arm_extra whichside="right" sidesign="+1.0" rollsign="+"/>
+<xacro:arm_extra whichside="left"  sidesign="-1.0" rollsign="-"/>
+
+<!--====BUILD STUFF THAT NEEDS TO RUN IN EITHER SIMULATION OR ON THE REAL ROBOT ====-->
+<include filename="$(find amigo_robot_model)/description/sim_or_robot_xacro/robot_real_$(optenv ROBOT_REAL false)_complex.urdf.xacro" />
+
+</robot>
+
+
+
