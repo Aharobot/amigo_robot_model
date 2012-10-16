@@ -11,6 +11,7 @@
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <child link="base_link"/>
         <dynamics damping="100" friction="20" />
+	<limit effort="1000" velocity="1000" lower="-1000" upper="1000" />
     </joint> 
 
     <link name="base_y_link">
@@ -27,6 +28,7 @@
         <origin rpy="0 0 0" xyz="0 0 0" />
         <child link="base_y_link" />
         <dynamics damping="100" friction="20" />
+        <limit effort="1000" velocity="1000" lower="-1000" upper="1000" />
     </joint>
 
     <link name="base_x_link">
@@ -43,6 +45,7 @@
         <origin rpy="0 0 0" xyz="0 0 0" />
         <child link="base_x_link" />
         <dynamics damping="100" friction="20" />
+	<limit effort="1000" velocity="1000" lower="-1000" upper="1000" />
     </joint>
 
     <link name="base_fixed_link">
