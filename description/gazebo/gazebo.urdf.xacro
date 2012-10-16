@@ -132,9 +132,10 @@
       <farClip>3</farClip>
       <updateRate>20</updateRate>
       <baseline>0.1</baseline>
-      <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libgazebo_ros_openni_kinect.so">
+      <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libkinect_controller.so"> <!-- THIS IS THE FORKED VERSION UNTIL NOW (OCT16 2012) THE VERSION IN GAZEBO_PLUGINS WAS NOT SHOWING DEPTH IMAGE PROPERLY!! -->
         <alwaysOn>true</alwaysOn>
         <updateRate>20</updateRate>
+	<cameraName>camera</cameraName>
         <imageTopicName>/camera/rgb/image_color</imageTopicName>
 	<cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
 	<depthImageTopicName>/camera/depth/image</depthImageTopicName>
