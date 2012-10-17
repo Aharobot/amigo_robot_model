@@ -10,9 +10,6 @@
    <license>BSD</license>
    <review status="unreviewed" notes=""/>
 
-<!--get plugins -->
-<include filename="$(find amigo_robot_model)/description/gazebo/gazebo.urdf.xacro" />
-
 <!--get link & joint definitions -->
 <include filename="$(find amigo_robot_model)/description/definitions.xacro" />
 
