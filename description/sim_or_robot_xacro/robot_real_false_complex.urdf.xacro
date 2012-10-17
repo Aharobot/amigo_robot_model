@@ -4,6 +4,9 @@
 
 <!-- This stuff runs only in simulation and NOT on the real robot -->
 
+<!--Gazebo plugins -->
+<include filename="$(find amigo_robot_model)/description/gazebo/gazebo.urdf.xacro" />
+
 <!--====BUILD SIMULATION WHEELS====-->
 <include filename="$(find amigo_robot_model)/description/wheels/wheels.urdf.xacro" />
 <xacro:wheel side_LR="left" side_FR="front" sign_LR="-" sign_FR="+" wheel_angle="2.3562" />
