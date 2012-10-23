@@ -151,8 +151,8 @@
     </sensor:camera>
   </gazebo>
 
-  <gazebo reference="base_openni_camera">
-    <sensor:camera name="base_openni_camera">
+  <gazebo reference="base_kinect_openni_camera">
+    <sensor:camera name="base_kinect_openni_camera">
       <imageFormat>R8G8B8</imageFormat>
       <imageSize>640 480</imageSize>
       <hfov>60</hfov>
