@@ -88,7 +88,7 @@
 <!--the geometry that seals the torso-->
 
 <!--right-->
-<xacro:my_link name="closure_right" mass="0.01" color="White">
+<!--<xacro:my_link name="closure_right" mass="0.01" color="White">
    <box size="0.12 0.004 0.155"/>
    <origin xyz="0 0 0" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -99,10 +99,10 @@
     <parent link="torso"/>
     <child link="closure_right"/>
     <origin xyz="0.045 0.12 0.0" rpy="0 0 0"/>
-</joint>
+</joint>-->
 
 <!--left-->
-<xacro:my_link name="closure_left" mass="0.01" color="White">
+<!--<xacro:my_link name="closure_left" mass="0.01" color="White">
    <box size="0.12 0.004 0.155"/>
    <origin xyz="0 0 0" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -113,10 +113,10 @@
     <parent link="torso"/>
     <child link="closure_left"/>
     <origin xyz="0.045 -0.12 0.0" rpy="0 0 0"/>
-</joint>
+</joint>-->
 
 <!--bottom-->
-<xacro:my_link name="closure_bottom" mass="0.01" color="White">
+<!--<xacro:my_link name="closure_bottom" mass="0.01" color="White">
    <cylinder radius="0.1" length="0.004"/>
    <origin xyz="0 0 0" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -127,6 +127,6 @@
     <parent link="torso"/>
     <child link="closure_bottom"/>
     <origin xyz="-0.05 0.0 0.0" rpy="0 1.5708 0"/>
-</joint>
+</joint>-->
 
 </robot>

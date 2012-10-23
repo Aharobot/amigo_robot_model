@@ -65,6 +65,20 @@
                 <mechanicalReduction>1</mechanicalReduction>
                 <motorTorqueConstant>1</motorTorqueConstant>
         </transmission>
+
+        <transmission name="finger1_tip_trans_${side}" type="pr2_mechanism_model/SimpleTransmission">
+                <actuator name="finger1_tip_motor_${side}" />
+                <joint name="finger1_tip_joint_${side}" />
+                <mechanicalReduction>1</mechanicalReduction>
+                <motorTorqueConstant>1</motorTorqueConstant>
+        </transmission>
+
+        <transmission name="finger2_tip_trans_${side}" type="pr2_mechanism_model/SimpleTransmission">
+                <actuator name="finger2_tip_motor_${side}" />
+                <joint name="finger2_tip_joint_${side}" />
+                <mechanicalReduction>1</mechanicalReduction>
+                <motorTorqueConstant>1</motorTorqueConstant>
+        </transmission>
 </xacro:macro>
 
 <xacro:arm_trans side="left"/>
