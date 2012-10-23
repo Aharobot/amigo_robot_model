@@ -151,4 +151,32 @@
     </sensor:camera>
   </gazebo>
 
+  <gazebo reference="base_openni_camera">
+    <sensor:camera name="base_openni_camera">
+      <imageFormat>R8G8B8</imageFormat>
+      <imageSize>640 480</imageSize>
+      <hfov>60</hfov>
+      <nearClip>0.05</nearClip>
+      <farClip>3</farClip>
+      <updateRate>20</updateRate>
+      <baseline>0.1</baseline>
+      <controller:gazebo_ros_openni_kinect name="base_kinect_camera_controller" plugin="libkinect_controller.so"> <!-- THIS IS THE FORKED VERSION UNTIL NOW (OCT16 2012) THE VERSION IN GAZEBO_PLUGINS WAS NOT SHOWING DEPTH IMAGE PROPERLY!! -->
+        <alwaysOn>true</alwaysOn>
+        <updateRate>20</updateRate>
+	<cameraName>base_camera</cameraName>
+        <imageTopicName>/base_camera/rgb/image_color</imageTopicName>
+	<cameraInfoTopicName>/base_camera/rgb/camera_info</cameraInfoTopicName>
+	<depthImageTopicName>/base_camera/depth/image</depthImageTopicName>
+	<depthImageCameraInfoTopicName>/base_camera/depth/camera_info</depthImageCameraInfoTopicName>
+	<pointCloudTopicName>/base_camera/rgb/points</pointCloudTopicName>
+        <frameName>/base_kinect_openni_depth_optical_frame</frameName>
+        <!--<distortion_k1>0.00000001</distortion_k1>
+        <distortion_k2>0.00000001</distortion_k2>
+        <distortion_k3>0.00000001</distortion_k3>
+        <distortion_t1>0.00000001</distortion_t1>
+        <distortion_t2>0.00000001</distortion_t2>-->
+      </controller:gazebo_ros_openni_kinect>
+    </sensor:camera>
+  </gazebo>
+
 </robot>
