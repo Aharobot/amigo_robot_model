@@ -92,6 +92,14 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
 
+<!--the right finger phalanx-->
+<xacro:my_link name="finger1_phalanx_${whichside}" mass="0.01" color="White">
+   <cylinder length="0.02" radius="0.009"/>
+   <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0" rpy="0 0 0" />
+   <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+</xacro:my_link>
+
 <!--the right finger tip-->
 <xacro:my_link name="finger1_tip_${whichside}" mass="0.05" color="Black">
    <box size="0.018 0.018 0.06"/>
@@ -106,6 +114,14 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+</xacro:my_link>
+
+<!--the left finger phalanx-->
+<xacro:my_link name="finger2_phalanx_${whichside}" mass="0.01" color="White">
+   <cylinder length="0.02" radius="0.009"/>
+   <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
+   <origin xyz="0.0 0.0 0" rpy="0 0 0" />
+   <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
 </xacro:my_link>
 
 <!--the left finger tip -->
@@ -190,6 +206,12 @@ note: not visible, purely kinematic-->
    <limit effort="3" velocity="1.0" lower="-1.57" upper="1.57"/>
 </xacro:my_joint>
 
+<joint name="finger1_phalanx_joint_${whichside}" type="fixed">
+    <parent link="finger1_${whichside}"/>
+    <child link="finger1_phalanx_${whichside}"/>
+    <origin xyz="0 0 -0.06" rpy="0 1.57 0"/>
+</joint>
+
 <xacro:my_joint name="finger1_tip_joint_${whichside}" type="revolute" parent="finger1_${whichside}" child="finger1_tip_${whichside}">
    <origin xyz=" 0 0.0 -0.06" rpy="0 0 0"/>
    <dynamics damping="0.5" friction="1.0"/>
@@ -200,14 +222,20 @@ note: not visible, purely kinematic-->
 <xacro:my_joint name="finger2_joint_${whichside}" type="revolute" parent="hand_${whichside}" child="finger2_${whichside}">
    <origin xyz="0.075 -0.02 0" rpy="0 -1.57 0"/>
    <dynamics damping="0.5" friction="1.0"/>
-   <axis xyz="1 0 0"/>
+   <axis xyz="-1 0 0"/>
    <limit effort="3" velocity="1.0" lower="-1.57" upper="1.57"/>
 </xacro:my_joint>
+
+<joint name="finger2_phalanx_joint_${whichside}" type="fixed">
+    <parent link="finger2_${whichside}"/>
+    <child link="finger2_phalanx_${whichside}"/>
+    <origin xyz="0 0 -0.06" rpy="0 1.57 0"/>
+</joint>
 
 <xacro:my_joint name="finger2_tip_joint_${whichside}" type="revolute" parent="finger2_${whichside}" child="finger2_tip_${whichside}">
    <origin xyz="0 0 -0.06" rpy="0 0 0"/>
    <dynamics damping="0.5" friction="1.0"/>
-   <axis xyz="1 0 0"/>
+   <axis xyz="-1 0 0"/>
    <limit effort="3" velocity="1.0" lower="-1.57" upper="1.57"/>
 </xacro:my_joint>
 
