@@ -91,6 +91,10 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
+<gazebo reference="finger1_${whichside}">
+  <mu1 value="100.0" />
+  <mu2 value="100.0" />
+</gazebo>
 
 <!--the right finger phalanx-->
 <xacro:my_link name="finger1_phalanx_${whichside}" mass="0.01" color="White">
@@ -107,6 +111,10 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
    <inertia ixx="0.00037"  ixy="0"  ixz="0" iyy="0.00052" iyz="0" izz="0.00052" />
 </xacro:my_link>
+<gazebo reference="finger1_tip_${whichside}">
+  <mu1 value="100.0" />
+  <mu2 value="100.0" />
+</gazebo>
 
 <!--the right finger tip phalanx-->
 <xacro:my_link name="finger1_tip_phalanx_${whichside}" mass="0.01" color="White">
@@ -123,6 +131,10 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
    <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
 </xacro:my_link>
+<gazebo reference="finger2_${whichside}">
+  <mu1 value="100.0" />
+  <mu2 value="100.0" />
+</gazebo>
 
 <!--the left finger phalanx-->
 <xacro:my_link name="finger2_phalanx_${whichside}" mass="0.01" color="White">
@@ -139,6 +151,10 @@ note: not visible, see arm_extra_visuals for the wrist visuals -->
    <origin xyz="0.0 0.0 -0.03" rpy="0 0 0" />
    <inertia ixx="0.00037"  ixy="0"  ixz="0" iyy="0.00052" iyz="0" izz="0.00052" />
 </xacro:my_link>
+<gazebo reference="finger2_tip_${whichside}">
+  <mu1 value="100.0" />
+  <mu2 value="100.0" />
+</gazebo>
 
 <!--the left finger tip phalanx-->
 <xacro:my_link name="finger2_tip_phalanx_${whichside}" mass="0.01" color="White">
@@ -267,32 +283,13 @@ note: not visible, purely kinematic-->
     <origin xyz="0 0 -0.06" rpy="0 1.57 0"/>
 </joint>
 
-  <joint name="grippoint_joint_${whichside}" type="fixed">
-    <parent link="hand_${whichside}"/>
-    <child link="grippoint_${whichside}"/>
-    <origin xyz="0.14 0.0 0.0" rpy="0 0 0"/>
-  </joint>
+<joint name="grippoint_joint_${whichside}" type="fixed">
+  <parent link="hand_${whichside}"/>
+  <child link="grippoint_${whichside}"/>
+  <origin xyz="0.14 0.0 0.0" rpy="0 0 0"/>
+</joint>
 
 </xacro:macro>
-
-<!-- Friction Gripper -->
-<gazebo reference="finger1_right">
-	<mu1 value="100.0" />
-	<mu2 value="100.0" />
-</gazebo>
-<gazebo reference="finger1_tip_right">
-	<mu1 value="100.0" />
-	<mu2 value="100.0" />
-</gazebo>
-<gazebo reference="finger2_right">
-	<mu1 value="100.0" />
-	<mu2 value="100.0" />
-</gazebo>
-<gazebo reference="finger2_tip_right">
-	<mu1 value="100.0" />
-	<mu2 value="100.0" />
-</gazebo>
-
 
 </robot>
 
