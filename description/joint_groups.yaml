@@ -1,0 +1,46 @@
+robot_joint_groups:
+    - name: left_arm
+      reference_topic: "/arm_left_controller/references"
+      measurement_topic: "/arm_left_controller/measurements"
+      joint_names:
+          - shoulder_yaw_joint_left
+          - shoulder_pitch_joint_left
+          - shoulder_roll_joint_left
+          - elbow_pitch_joint_left
+          - elbow_roll_joint_left
+          - wrist_pitch_joint_left
+          - wrist_yaw_joint_left
+    - name: right_arm
+      reference_topic: "/arm_right_controller/references"
+      measurement_topic: "/arm_right_controller/measurements"
+      joint_names:
+          - shoulder_yaw_joint_right
+          - shoulder_pitch_joint_right
+          - shoulder_roll_joint_right
+          - elbow_pitch_joint_right
+          - elbow_roll_joint_right
+          - wrist_pitch_joint_right
+          - wrist_yaw_joint_right
+    - name: left_gripper
+      reference_topic: "/gripper_left_controller/references"
+      measurement_topic: "/gripper_left_controller/measurements"
+      joint_names:
+          - finger1_joint_left
+          - finger2_joint_left
+    - name: right_gripper
+      reference_topic: "/gripper_right_controller/references"
+      measurement_topic: "/gripper_right_controller/measurements"
+      joint_names:
+          - finger1_joint_right
+          - finger2_joint_right
+    - name: torso
+      reference_topic: "/torso_controller/references"
+      measurement_topic: "/torso_controller/measurements"
+      joint_names:
+          - spindle_joint
+    - name: head
+      reference_topic: "/head_controller/references"
+      measurement_topic: "/head_controller/measurements"
+      joint_names:
+          - neck_pan_joint
+          - neck_tilt_joint
