@@ -24,16 +24,13 @@
    <mesh filename="package://amigo_robot_model/Media/meshes/torsoslidertextured.dae" scale="0.004 0.004 0.004"/>
 </xacro:my_link_texturedmesh>
 
-<!--the bottomcovers
-note: uses a different bounding box, because a normal one would be too inaccurate-->
-<xacro:my_link_texturedmesh_diff_coll name="base" mass="20" texture="bottomcovers">
+<!--the bottomcover -->
+<xacro:my_link_texturedmesh name="base" mass="20" texture="bottomcovers">
    <origin xyz="0.0 0.0 0.3275" rpy="0 0 0"/>
    <origin xyz="0.0 0.0 0.23" rpy="0 0 -1.5708" />
-   <origin xyz="0.0 0.0 0.33" rpy="0 0 -1.5708" />
    <inertia ixx="2.63"  ixy="0"  ixz="0" iyy="2.63" iyz="0" izz="2.4" /> 
    <mesh filename="package://amigo_robot_model/Media/meshes/bottomcovers.dae" scale="0.0004 0.0004 0.0004"/>
-   <box size="0.275 0.275 0.6"/>
-</xacro:my_link_texturedmesh_diff_coll>
+</xacro:my_link_texturedmesh>
 
 <!--the root of the tf-tree, because it serves only this function it has no visuals-->
 <xacro:my_link name="base_link" mass="0" color="Red">
@@ -43,115 +40,28 @@ note: uses a different bounding box, because a normal one would be too inaccurat
    <inertia ixx="0"  ixy="0"  ixz="0" iyy="0" iyz="0" izz="0" /> 
 </xacro:my_link>
 
-
 <!-- joints start here -->
-
-  <joint name="spindle_joint" type="prismatic">
-    <parent link="base"/>
-    <child link="torso_slider"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.58" rpy="3.14159265 -1.5708 0"/>
-    <dynamics damping="3" friction="0.0"/> <!--*-->
-    <limit effort="30" velocity="1.0" lower="0.0" upper="0.41" /> <!--*-->
-  </joint>
-
-  <joint name="base_link_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
-  </joint>
-  
-    <joint name="torso_slider_joint" type="fixed">
-    <parent link="torso_slider"/>
-    <child link="torso"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.135 0.0 0.0" rpy="0 0 0"/>
-  </joint>
-  
-<!--extra boundingbox for the batteries on the left-->
-<link name="batterycovercollision_left">
-   <inertial>
-     <origin xyz="0.0 0.0 0.0" />
-     <mass value="0.001"/>
-     <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   </inertial>
-    <visual>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.0 0.0 0.0"/>
-		</geometry>
-    </visual>
-    <collision>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.25 0.15 0.125"/>
-		</geometry>
-    </collision>
-</link>
-
-<joint name="batterycovercollision_left_joint" type="fixed">
-    <parent link="base"/>
-    <child link="batterycovercollision_left"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 0.25 0.1" rpy="0 0 0"/>
+<joint name="spindle_joint" type="prismatic">
+  <parent link="base"/>
+  <child link="torso_slider"/>
+  <axis xyz="1 0 0"/>
+  <origin xyz="0.0 0.0 0.58" rpy="3.14159265 -1.5708 0"/>
+  <dynamics damping="3" friction="0.0"/> <!--*-->
+  <limit effort="30" velocity="1.0" lower="0.0" upper="0.41" /> <!--*-->
 </joint>
 
-
-<!--extra boundingbox for the batteries on the right-->
-<link name="batterycovercollision_right">
-   <inertial>
-     <origin xyz="0.0 0.0 0.0" />
-     <mass value="0.001"/>
-     <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   </inertial>
-    <visual>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.0 0.0 0.0"/>
-		</geometry>
-    </visual>
-    <collision>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.25 0.15 0.125"/>
-		</geometry>
-    </collision>
-</link>
-
-<joint name="batterycovercollision_right_joint" type="fixed">
-    <parent link="base"/>
-    <child link="batterycovercollision_right"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="0.0 -0.25 0.1" rpy="0 0 0"/>
+<joint name="base_link_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="base"/>
+  <axis xyz="1 0 0"/>
+  <origin xyz="0.0 0.0 0.055" rpy="0 0 0"/>
 </joint>
-
-<!--extra boundingbox for the computers at the back-->
-<link name="computercovercollision">
-   <inertial>
-     <origin xyz="0.0 0.0 0.0" />
-     <mass value="0.001"/>
-     <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.01" />
-   </inertial>
-    <visual>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.0 0.0 0.0"/>
-		</geometry>
-    </visual>
-    <collision>
-		<origin xyz="0.0 0.0 0.0" />
-		<geometry>
-			<box size="0.25 0.15 0.175"/>
-		</geometry>
-    </collision>
-</link>
-
-<joint name="computercovercollision_joint" type="fixed">
-    <parent link="base"/>
-    <child link="computercovercollision"/>
-    <axis xyz="1 0 0"/>
-    <origin xyz="-0.25 0.0 0.125" rpy="0 0 1.5708"/>
+  
+<joint name="torso_slider_joint" type="fixed">
+  <parent link="torso_slider"/>
+  <child link="torso"/>
+  <axis xyz="1 0 0"/>
+  <origin xyz="0.135 0.0 0.0" rpy="0 0 0"/>
 </joint>
 
 </robot>
