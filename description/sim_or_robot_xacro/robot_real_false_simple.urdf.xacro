@@ -16,4 +16,9 @@
 <include filename="$(find amigo_robot_model)/description/base/base.transmission.xacro" />
 <include filename="$(find amigo_robot_model)/description/head/head.transmission.xacro" />
 
+<!--====ADD AR MARKERS IN SIMULATION====-->
+<include filename="$(find amigo_robot_model)/description/arms/ar_markers.urdf.xacro" />
+<xacro:ar_marker whichside="left"/>
+<xacro:ar_marker whichside="right"/>
+
 </robot>
