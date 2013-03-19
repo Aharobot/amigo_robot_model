@@ -2,14 +2,8 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
-<!--======== Plugins ========-->
-<gazebo>
-      <controller:gazebo_ros_time name="gazebo_ros_time" plugin="libgazebo_ros_time.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>1000.0</updateRate>
-        <interface:audio name="dummy_gazebo_ros_time_iface_should_not_be_here"/>
-      </controller:gazebo_ros_time>
-
+  <!--======== Plugins ========-->
+  <gazebo>
       <controller:gazebo_ros_controller_manager name="gazebo_ros_controller_manager" plugin="libgazebo_ros_controller_manager.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1000.0</updateRate>
@@ -20,27 +14,16 @@
          <alwaysOn>true</alwaysOn>
          <updateRate>1000.0</updateRate>
          <bodyName>base_link</bodyName>
-         <topicName>body_pose_ground_truth</topicName>
-         <xyzOffsets>0.0 0.0 0</xyzOffsets> 
-         <rpyOffsets>0 0 0</rpyOffsets>
+         <topicName>imu_data</topicName>
+	 <serviceName>imu_service</serviceName>
+	 <gaussianNoise>2.89e-08</gaussianNoise>
+         <xyzOffset>0 0 0</xyzOffset>	 
+         <rpyOffset>0 0 0</rpyOffset>
          <interface:position name="imu_position_iface"/>
        </controller:gazebo_ros_imu>
-       
-       <controller:gazebo_ros_p3d name="base_controller" plugin="libgazebo_ros_p3d.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>100.0</updateRate>
-        <bodyName>base_link</bodyName>
-        <topicName>base_pose_ground_truth</topicName>
-        <gaussianNoise>0.01</gaussianNoise>
-        <frameName>map</frameName>
-        <xyzOffsets>25.7 25.7 0</xyzOffsets> <!-- initialize odometry for fake localization-->
-        <rpyOffsets>0 0 0</rpyOffsets>
-        <interface:position name="p3d_base_position"/>
-      </controller:gazebo_ros_p3d>
-
   </gazebo>
 
- <gazebo reference="base_laser">
+  <gazebo reference="base_laser">
     <sensor:ray name="base_ray_sensor">
       <origin>0.0 0.0 0.0</origin>
       <rayCount>683</rayCount>
@@ -59,69 +42,11 @@
         <updateRate>15.0</updateRate>
         <topicName>base_scan</topicName>
         <frameName>/base_laser</frameName>
+	<hokuyoMinIntensity>101</hokuyoMinIntensity>
         <interface:laser name="base_ros_ray_sensor_iface"/>
       </controller:gazebo_ros_laser>
     </sensor:ray>
-</gazebo>
-
- <gazebo reference="top_laser">
-    <sensor:ray name="top_ray_sensor">
-      <origin>0.0 0.0 0.0</origin>
-      <rayCount>683</rayCount>
-      <rangeCount>683</rangeCount>
-      <laserCount>1</laserCount>
-      <displayRays>false</displayRays>
-      <minAngle>-135</minAngle>
-      <maxAngle> 135</maxAngle>
-      <minRange>0.05</minRange>
-      <maxRange>10.0</maxRange>
-      <resRange>0.01</resRange>
-      <updateRate>100.0</updateRate>
-      <controller:gazebo_ros_laser name="top_ros_ray_sensor_controller" plugin="libgazebo_ros_laser.so">
-        <gaussianNoise>0.005</gaussianNoise>
-        <alwaysOn>true</alwaysOn>
-        <updateRate>15.0</updateRate>
-        <topicName>top_scan</topicName>
-        <frameName>/top_laser</frameName>
-        <interface:laser name="top_ros_ray_sensor_iface"/>
-      </controller:gazebo_ros_laser>
-    </sensor:ray>
-</gazebo>
-<!--
-  <gazebo reference="camera_left">
-    <sensor:camera name="camera_left_sensor">
-      <controller:gazebo_ros_camera name="controller_left-name" plugin="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>15.0</updateRate>
-        <imageTopicName>/left/image_raw</imageTopicName>
-        <cameraInfoTopicName>/left/camera_info</cameraInfoTopicName>
-        <frameName>/camera_tf</frameName>
-      </controller:gazebo_ros_camera>
-    </sensor:camera>
   </gazebo>
-
-  <gazebo reference="camera_right">
-    <sensor:camera name="camera_right_sensor">
-      <controller:gazebo_ros_camera name="controller_right-name" plugin="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>15.0</updateRate>
-        <imageTopicName>/right/image_raw</imageTopicName>
-        <cameraInfoTopicName>/right/camera_info</cameraInfoTopicName>
-        <frameName>/camera_tf</frameName>
-      </controller:gazebo_ros_camera>
-    </sensor:camera>
-  </gazebo>
-  <gazebo reference="camera_center">
-    <sensor:camera name="camera_center_sensor">
-      <controller:gazebo_ros_camera name="controller_center_name" plugin="libgazebo_ros_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>15.0</updateRate>
-        <imageTopicName>/center/image_raw</imageTopicName>
-        <cameraInfoTopicName>/center/camera_info</cameraInfoTopicName>
-        <frameName>/camera_tf</frameName>
-      </controller:gazebo_ros_camera>
-    </sensor:camera>
-  </gazebo>-->
   
   <gazebo reference="openni_camera">
     <sensor:camera name="openni_camera">
@@ -142,11 +67,16 @@
 	<depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
 	<pointCloudTopicName>/camera/rgb/points</pointCloudTopicName>
         <frameName>/openni_depth_optical_frame</frameName>
-        <!--<distortion_k1>0.00000001</distortion_k1>
-        <distortion_k2>0.00000001</distortion_k2>
-        <distortion_k3>0.00000001</distortion_k3>
-        <distortion_t1>0.00000001</distortion_t1>
-        <distortion_t2>0.00000001</distortion_t2>-->
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+	<CxPrime>0.0</CxPrime>
+	<Cx>0.0</Cx>
+	<Cy>0.0</Cy>
+	<focalLength>0.0</focalLength>
+	<hackBaseline>0.0</hackBaseline>
       </controller:gazebo_ros_openni_kinect>
     </sensor:camera>
   </gazebo>
@@ -170,11 +100,16 @@
 	<depthImageCameraInfoTopicName>/base_camera/depth/camera_info</depthImageCameraInfoTopicName>
 	<pointCloudTopicName>/base_camera/rgb/points</pointCloudTopicName>
         <frameName>/base_kinect_openni_depth_optical_frame</frameName>
-        <!--<distortion_k1>0.00000001</distortion_k1>
-        <distortion_k2>0.00000001</distortion_k2>
-        <distortion_k3>0.00000001</distortion_k3>
-        <distortion_t1>0.00000001</distortion_t1>
-        <distortion_t2>0.00000001</distortion_t2>-->
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+	<CxPrime>0.0</CxPrime>
+	<Cx>0.0</Cx>
+	<Cy>0.0</Cy>
+	<focalLength>0.0</focalLength>
+	<hackBaseline>0.0</hackBaseline>
       </controller:gazebo_ros_openni_kinect>
     </sensor:camera>
   </gazebo>
