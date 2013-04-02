@@ -14,7 +14,7 @@
          <alwaysOn>true</alwaysOn>
          <updateRate>1000.0</updateRate>
          <bodyName>base_link</bodyName>
-         <topicName>imu_data</topicName>
+         <topicName>/imu/data</topicName>
 	 <serviceName>imu_service</serviceName>
 	 <gaussianNoise>2.89e-08</gaussianNoise>
          <xyzOffset>0 0 0</xyzOffset>	 
