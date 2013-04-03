@@ -21,8 +21,9 @@
 <!--extra body visuals-->
 <include filename="$(find amigo_robot_model)/description/body_extra_visuals/body_extra.urdf.xacro" />
 
-<!--========BUILD LASER======-->
-<include filename="$(find amigo_robot_model)/description/laser/laser.urdf.xacro" />
+<!--========BUILD LASERS======-->
+<include filename="$(find amigo_robot_model)/description/laser/front_laser.urdf.xacro" />
+<include filename="$(find amigo_robot_model)/description/laser/back_laser.urdf.xacro" />
 
 <!--========BUILD HEAD======-->
 <include filename="$(find amigo_robot_model)/description/head/head.urdf.xacro" />

@@ -23,8 +23,8 @@
        </controller:gazebo_ros_imu>
   </gazebo>
 
-  <gazebo reference="base_laser">
-    <sensor:ray name="base_ray_sensor">
+  <gazebo reference="front_laser">
+    <sensor:ray name="front_laser_sensor">
       <origin>0.0 0.0 0.0</origin>
       <rayCount>683</rayCount>
       <rangeCount>683</rangeCount>
@@ -36,14 +36,39 @@
       <maxRange>10.0</maxRange>
       <resRange>0.01</resRange>
       <updateRate>100.0</updateRate>
-      <controller:gazebo_ros_laser name="base_ros_ray_sensor_controller" plugin="libgazebo_ros_laser.so">
+      <controller:gazebo_ros_laser name="front_laser_sensor_controller" plugin="libgazebo_ros_laser.so">
         <gaussianNoise>0.005</gaussianNoise>
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
-        <topicName>base_scan</topicName>
-        <frameName>/base_laser</frameName>
+        <topicName>scan</topicName>
+        <frameName>/front_laser</frameName>
 	<hokuyoMinIntensity>101</hokuyoMinIntensity>
-        <interface:laser name="base_ros_ray_sensor_iface"/>
+        <interface:laser name="front_laser_sensor_iface"/>
+      </controller:gazebo_ros_laser>
+    </sensor:ray>
+  </gazebo>
+
+  <gazebo reference="back_laser">
+    <sensor:ray name="back_laser_sensor">
+      <origin>0.0 0.0 0.0</origin>
+      <rayCount>683</rayCount>
+      <rangeCount>683</rangeCount>
+      <laserCount>1</laserCount>
+      <displayRays>false</displayRays>
+      <minAngle>-120</minAngle>
+      <maxAngle> 120</maxAngle>
+      <minRange>0.05</minRange>
+      <maxRange>10.0</maxRange>
+      <resRange>0.01</resRange>
+      <updateRate>100.0</updateRate>
+      <controller:gazebo_ros_laser name="back_laser_sensor_controller" plugin="libgazebo_ros_laser.so">
+        <gaussianNoise>0.005</gaussianNoise>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>15.0</updateRate>
+        <topicName>scan</topicName>
+        <frameName>/back_laser</frameName>
+	<hokuyoMinIntensity>101</hokuyoMinIntensity>
+        <interface:laser name="back_laser_sensor_iface"/>
       </controller:gazebo_ros_laser>
     </sensor:ray>
   </gazebo>
