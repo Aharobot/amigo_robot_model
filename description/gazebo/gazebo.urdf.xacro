@@ -40,7 +40,7 @@
         <gaussianNoise>0.005</gaussianNoise>
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
-        <topicName>scan</topicName>
+        <topicName>base_scan</topicName>
         <frameName>/front_laser</frameName>
 	<hokuyoMinIntensity>101</hokuyoMinIntensity>
         <interface:laser name="front_laser_sensor_iface"/>
@@ -65,7 +65,7 @@
         <gaussianNoise>0.005</gaussianNoise>
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
-        <topicName>scan</topicName>
+        <topicName>base_scan</topicName>
         <frameName>/back_laser</frameName>
 	<hokuyoMinIntensity>101</hokuyoMinIntensity>
         <interface:laser name="back_laser_sensor_iface"/>
