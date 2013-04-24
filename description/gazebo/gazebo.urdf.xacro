@@ -48,7 +48,7 @@
     </sensor:ray>
   </gazebo>
 
-  <gazebo reference="back_laser">
+  <!--gazebo reference="back_laser">
     <sensor:ray name="back_laser_sensor">
       <origin>0.0 0.0 0.0</origin>
       <rayCount>683</rayCount>
@@ -71,7 +71,7 @@
         <interface:laser name="back_laser_sensor_iface"/>
       </controller:gazebo_ros_laser>
     </sensor:ray>
-  </gazebo>
+  </gazebo-->
   
   <gazebo reference="openni_camera">
     <sensor:camera name="openni_camera">
