@@ -73,7 +73,7 @@
     </sensor:ray>
   </gazebo-->
   
-  <!-- <gazebo reference="openni_camera">
+  <gazebo reference="openni_camera">
     <sensor:camera name="openni_camera">
       <imageFormat>R8G8B8</imageFormat>
       <imageSize>640 480</imageSize>
@@ -82,7 +82,7 @@
       <farClip>3</farClip>
       <updateRate>20</updateRate>
       <baseline>0.1</baseline>
-      <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libkinect_controller.so">
+      <controller:gazebo_ros_openni_kinect name="kinect_camera_controller" plugin="libkinect_controller.so"> <!-- THIS IS THE FORKED VERSION UNTIL NOW (OCT16 2012) THE VERSION IN GAZEBO_PLUGINS WAS NOT SHOWING DEPTH IMAGE PROPERLY!! -->
         <alwaysOn>true</alwaysOn>
         <updateRate>20</updateRate>
 	<cameraName>camera</cameraName>
@@ -104,7 +104,7 @@
 	<hackBaseline>0.0</hackBaseline>
       </controller:gazebo_ros_openni_kinect>
     </sensor:camera>
-  </gazebo> -->
+  </gazebo>
 
   <gazebo reference="base_kinect_openni_camera">
     <sensor:camera name="base_kinect_openni_camera">
