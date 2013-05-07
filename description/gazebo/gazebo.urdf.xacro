@@ -73,6 +73,31 @@
     </sensor:ray>
   </gazebo-->
   
+  <gazebo reference="torso_laser">
+    <sensor:ray name="torso_laser_sensor">
+      <origin>0.0 0.0 0.0</origin>
+      <rayCount>683</rayCount>
+      <rangeCount>683</rangeCount>
+      <laserCount>1</laserCount>
+      <displayRays>false</displayRays>
+      <minAngle>-120</minAngle>
+      <maxAngle> 120</maxAngle>
+      <minRange>0.05</minRange>
+      <maxRange>10.0</maxRange>
+      <resRange>0.01</resRange>
+      <updateRate>100.0</updateRate>
+      <controller:gazebo_ros_laser name="torso_laser_sensor_controller" plugin="libgazebo_ros_laser.so">
+        <gaussianNoise>0.005</gaussianNoise>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>15.0</updateRate>
+        <topicName>top_scan</topicName>
+        <frameName>/torso_laser</frameName>
+	<hokuyoMinIntensity>101</hokuyoMinIntensity>
+        <interface:laser name="torso_laser_sensor_iface"/>
+      </controller:gazebo_ros_laser>
+    </sensor:ray>
+  </gazebo>
+  
   <gazebo reference="openni_camera">
     <sensor:camera name="openni_camera">
       <imageFormat>R8G8B8</imageFormat>
