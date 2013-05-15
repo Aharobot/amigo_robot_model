@@ -15,7 +15,7 @@
 
 <!-- ToDO: Measure exact offset -->
 <xacro:my_joint name="torso_laser_joint" type="fixed" parent="torso" child="torso_laser">
-   <origin xyz="-0.08 0.0 0.05" rpy="0 -1.57 0"/>
+   <origin xyz="-0.0994 0.0 0.075" rpy="0 -1.57 0"/>
    <dynamics damping="0.1" friction="0"/>
    <axis xyz="0 1 0"/>
    <limit effort="13.4" velocity="1.0" lower="-0.7809" upper="1.5708" /> 
