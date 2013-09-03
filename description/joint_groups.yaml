@@ -1,7 +1,7 @@
 robot_joint_groups:
     - name: left_arm
-      reference_topic: "/arm_left_controller/references"
-      measurement_topic: "/arm_left_controller/measurements"
+      reference_topic: "/amigo/left_arm/controller/references"
+      measurement_topic: "/amigo/left_arm/controller/measurements"
       joint_names:
           - shoulder_yaw_joint_left
           - shoulder_pitch_joint_left
@@ -10,9 +10,11 @@ robot_joint_groups:
           - elbow_roll_joint_left
           - wrist_pitch_joint_left
           - wrist_yaw_joint_left
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/arm_controller_left.yaml"
     - name: right_arm
-      reference_topic: "/arm_right_controller/references"
-      measurement_topic: "/arm_right_controller/measurements"
+      reference_topic: "/amigo/right_arm/controller/references"
+      measurement_topic: "/amigo/right_arm/controller/measurements"
       joint_names:
           - shoulder_yaw_joint_right
           - shoulder_pitch_joint_right
@@ -21,26 +23,36 @@ robot_joint_groups:
           - elbow_roll_joint_right
           - wrist_pitch_joint_right
           - wrist_yaw_joint_right
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/arm_controller_right.yaml"
     - name: left_gripper
-      reference_topic: "/gripper_left_controller/references"
-      measurement_topic: "/gripper_left_controller/measurements"
+      reference_topic: "/amigo/left_gripper/controller/references"
+      measurement_topic: "/amigo/left_gripper/controller/measurements"
       joint_names:
           - finger1_joint_left
           - finger2_joint_left
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/gripper_controller_left.yaml"
     - name: right_gripper
-      reference_topic: "/gripper_right_controller/references"
-      measurement_topic: "/gripper_right_controller/measurements"
+      reference_topic: "/amigo/right_gripper/controller/references"
+      measurement_topic: "/amigo/right_gripper/controller/measurements"
       joint_names:
           - finger1_joint_right
           - finger2_joint_right
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/gripper_controller_right.yaml"
     - name: torso
-      reference_topic: "/torso_controller/references"
-      measurement_topic: "/torso_controller/measurements"
+      reference_topic: "/amigo/torso/controller/references"
+      measurement_topic: "/amigo/torso/controller/measurements"
       joint_names:
-          - spindle_joint
-    - name: head
-      reference_topic: "/head_controller/references"
-      measurement_topic: "/head_controller/measurements"
+          - torso_joint
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/spindle_controller.yaml"
+    - name: neck
+      reference_topic: "/amigo/neck/controller/references"
+      measurement_topic: "/amigo/neck/controller/measurements"
       joint_names:
           - neck_pan_joint
           - neck_tilt_joint
+      parameter_file_package: "amigo_controller_configuration_gazebo"
+      parameter_file_path: "/parameters/head_controller.yaml"
